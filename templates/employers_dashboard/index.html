@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+
+<div class="card m-3 border border-5 shadow-lg" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ request.user.profile.profile_picture.url }}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ request.user.username }}</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <p>  
+
+          <p>
+            <a class="btn btn-dark" href="{% url 'employers_dashboard:create_job' %}" role="button">Post Job </a>
+            <a class="btn btn-dark" href="{% url 'user_account:profile' %}" role="button">Edit Profile </a>
+            <a class="btn btn-primary" href="{% url 'user_account:password-change-view' %}" role="button">Change Password</a>
+          </p>
+
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+			
+		</div>
+		<div class="col-md-8">
+			
+{% if jobs %}
+			<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for job in jobs %}
+    <tr>
+      <th scope="row">1</th>
+      <td> <a href="{% url 'employers_dashboard:employers_detail' job.id %}"> {{ job.title }} </a> </td>
+      <td> <button type="button" class="btn btn-outline-dark"> <a href="{% url 'employers_dashboard:edit_job' job.id %}"> <i class="bi bi-pencil-square"> Edit </i> </a> </button>  </td>
+      <td> 
+      	<form onclick="return confirm('Are you sure you want to delete this Job Post');" action="{% url 'employers_dashboard:job_delete' job.id %}" method="POST">	
+      		{% csrf_token %}
+      		<input type="submit" value="Delete" class="btn btn-danger ">
+      	  </form>
+      
+      	 </td>
+    </tr>
+    {% endfor %}
+   
+  
+  </tbody>
+</table>
+{% else%}
+
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Ooooops! you have no job posting yet</h4>
+  <p>Click on the add job button to create a job posting thanks </p>
+  <hr>
+  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+</div>
+
+
+{% endif %}
+
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

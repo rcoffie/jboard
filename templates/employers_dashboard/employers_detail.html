@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+
+{% block content %}
+
+
+<div class="container ">
+	<div class="row m-5">
+		<div class="col-md-8 border border-5 shadow-lg p-2">
+			<h4>{{ job.title }}  ({{job.location }}) </h4>
+			
+			<ul class="list-group list-group-flush">
+            <li class="list-group-item lead"> <i class="bi bi-briefcase-fill"></i>: {{ job.employment_type }}</li>
+            <li class="list-group-item lead"> <i class="bi bi-award-fill"></i> {{ job.experience_level  }} </li>
+            <li class="list-group-item lead"> <i class="bi bi-journal-bookmark-fill"></i> : {{ job.qualifiction_type}}</li>
+            <li class="list-group-item lead">  <i class="bi bi-cash-stack"></i>  : GH₵{{job.salary }} </li>
+            <li class="list-group-item lead"> <i class="bi bi-pen-fill"></i> :{{ job.experience }}year{{job.experience|pluralize }} </li>
+           </ul>
+
+			<hr>
+
+             <h5>Responsibilites  </h5>
+			<p> {{job.responsibilities}} </p> 
+			<hr>
+             <h5>Skills</h5>
+			<p>{{ job.preferred_skills}}</p>
+			<hr>
+
+			<h5>Other SKills</h5>
+			{{job.additional_skills}}
+            <hr>
+
+             <h5> Qualities </h5>
+			{{job.qualities}}
+
+
+			
+
+
+
+
+
+      
+		</div>
+
+  
+
+<div class="col-md-3">
+
+
+ 
+{% if applicants %}
+  <table class="table">
+  <thead>
+    <tr>
+     
+      <th scope="col">Applicant</th>
+      <th scope="col">Email</th>
+      <th scope="col">CV</th>
+    </tr>
+  </thead>
+  {% for applicant in applicants %}
+  <tbody>
+    <tr>
+     
+      <td>{{ applicant.firstName }} {{ applicant.lastName }}</td>
+      <td>{{applicant.email }}</td>
+      <td> <a href="{{ applicant.upload.url }}"> Download CV</a> </td>
+    </tr>
+  
+  </tbody>
+  {% endfor %}
+</table>
+{% endif %}
+
+ 
+	
+</div>
+
+
+
+</div>
+</div>
+
+
+
+{% endblock %}

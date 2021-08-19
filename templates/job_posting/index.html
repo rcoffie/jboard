@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+  <div class="row">
+    
+
+  {% if jobs %}
+  {% for job in jobs %}
+  
+  <div class=" col-md-8 border border-5 shadow-lg card mb-3 m-2" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{job.employer.profile.profile_picture.url}}" class="img-fluid " alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ job.title }}</h5>
+        <p class="card-text">{{ job.responsibilities|truncatewords:20 }}</p>
+        <p class="card-text"> Compnay: {{ job.employer.profile.company_name }}</p>
+        <p class="card-text"> Job Expires: {{ job.expiration_date }}</p>
+        
+        <p class="card-text"><small class="text-muted"> Date Posted: {{ job.date_created|naturaltime  }}</small></p>
+        <button class="btn  btn-dark"> <a href="{% url 'job_posting:job_detail' job.id %}"> View</a> </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% else%}
+
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Well done!</h4>
+  <p>No Job Post Yet </p>
+  <hr>
+  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+</div>
+
+{% endif %}
+      
+    
+  </div>
+</div>
+
+
+
+
+{% endblock %}
