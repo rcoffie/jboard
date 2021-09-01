@@ -13,12 +13,12 @@
 			<h4>{{ job.title }}  ({{job.location }}) {{job.employer.profile.official_email}} </h4>
 			
 			<ul class="list-group list-group-flush">
-            <li class="list-group-item lead"> <i class="bi bi-briefcase-fill"></i>: {{ job.employment_type }}</li>
-            <li class="list-group-item lead"> <i class="bi bi-award-fill"></i> {{ job.experience_level  }} </li>
-            <li class="list-group-item lead"> <i class="bi bi-journal-bookmark-fill"></i> : {{ job.qualifiction_type}}</li>
-            <li class="list-group-item lead">  <i class="bi bi-cash-stack"></i>  : GH₵{{job.salary }} </li>
-            <li class="list-group-item lead"> <i class="bi bi-pen-fill"></i> :{{ job.experience }}year{{job.experience|pluralize }} </li>
-             <li class="list-group-item lead"> <i class="bi bi-pen-fill"></i> :{{ job.expiration_date }} </li>
+            <li class="list-group-item lead"> <i class="bi bi-briefcase-fill"></i> <strong>Employment Type </strong> :{{ job.employment_type }}</li>
+            <li class="list-group-item lead"> <i class="bi bi-award-fill"></i> <strong> Level </strong>  :{{ job.experience_level  }} </li>
+            <li class="list-group-item lead"> <i class="bi bi-journal-bookmark-fill"></i> <strong> Qualification </strong> :{{ job.qualifiction_type}}</li>
+            <li class="list-group-item lead">  <i class="bi bi-cash-stack"></i> <strong>Salaray </strong>  : GH₵{{job.salary }} </li>
+            <li class="list-group-item lead"> <i class="bi bi-pen-fill"></i> <strong>Experience </strong> :{{ job.experience }}year{{job.experience|pluralize }} </li>
+             <li class="list-group-item lead"> <i class="bi bi-pen-fill"></i> <strong>Expires On </strong> :{{ job.expiration_date }} </li>
            </ul>
 
 			<hr>
