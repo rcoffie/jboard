@@ -1,5 +1,5 @@
 # jboard
-Job Portal
+Job Portal.
 A web application that allow employers to post job requirements for a position to be filled.
 Main Functions 
 Employers Dashboard 
